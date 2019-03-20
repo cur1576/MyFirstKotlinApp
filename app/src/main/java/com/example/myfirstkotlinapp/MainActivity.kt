@@ -18,7 +18,10 @@ class MainActivity : AppCompatActivity() {
         val p2 = PersonK("Max", "Mustermann", "MusterStr","Berlin", "12345",
             80,42)
 
+        val p3 = p2.copy()
+
         tv.append("\n" + p2.alter)
+        tv.append("\n" + p3.alter)
         tv.append("\n"+ JavaActivity().doit())
     }
 }

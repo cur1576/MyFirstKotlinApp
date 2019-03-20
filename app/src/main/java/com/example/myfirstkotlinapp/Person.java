@@ -21,6 +21,16 @@ public class Person {
         this.alter = alter;
     }
 
+    public Person(Person other) {
+        this.vName = other.vName;
+        this.nName = other.nName;
+        this.strasse = other.strasse;
+        this.ort = other.ort;
+        this.plz = other.plz;
+        this.hnr = other.hnr;
+        this.alter = other.alter;
+    }
+
     public String getVName() {
         return vName;
     }
