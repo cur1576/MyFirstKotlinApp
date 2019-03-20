@@ -19,5 +19,6 @@ class MainActivity : AppCompatActivity() {
             80,42)
 
         tv.append("\n" + p2.alter)
+        tv.append("\n"+ JavaActivity().doit())
     }
 }
