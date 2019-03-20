@@ -10,6 +10,7 @@ public class Person {
     private String plz;
     private int hnr;
     private int alter;
+//    private boolean isMitarbeiter;
 
     public Person(String vName, String nName, String strasse, String ort, String plz, int hnr, int alter) {
         this.vName = vName;

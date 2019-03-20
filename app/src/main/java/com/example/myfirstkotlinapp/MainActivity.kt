@@ -16,12 +16,12 @@ class MainActivity : AppCompatActivity() {
         tv.append("\n" + p.alter)
 
         val p2 = PersonK("Max", "Mustermann", "MusterStr","Berlin", "12345",
-            80,42)
+            80,42,true)
 
-        val p3 = p2.copy()
+//        val p3 = p2.copy()
 
-        tv.append("\n" + p2.alter)
-        tv.append("\n" + p3.alter)
+        tv.append("\n" + p2.strasse)
+//        tv.append("\n" + p3.alter)
         tv.append("\n"+ JavaActivity().doit())
     }
 }
