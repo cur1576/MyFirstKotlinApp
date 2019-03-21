@@ -1,5 +1,6 @@
 package com.example.myfirstkotlinapp
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_show_lists.*
@@ -28,6 +29,11 @@ class ShowLists : AppCompatActivity() {
 
         val max = maxValue(zahl1, zahl2)
 
+        button2.setOnClickListener {
+
+            startActivity(Intent(this@ShowLists,NullSafety::class.java))
+        }
+
 
         for (array in twoDimArray) {
             for ((index, i) in array.withIndex()) {
@@ -36,6 +42,14 @@ class ShowLists : AppCompatActivity() {
             textView.append("\n")
         }
 
+        for(i in numbers2.size-1 downTo 0 step 2) // downTo -> rüchwärts zählen  ; step -> Schrittweite
+            textView.append(" : $i ")
+
+        for(i in 2..100 step 2)
+            textView.append("$i ")
+
+        checkValue(1)
+        checkValue("Hallo")
     }
 
     fun maxValue(zahl1: Int, zahl2: Int) = if (zahl1 > zahl2) zahl1 else zahl2
@@ -45,6 +59,16 @@ class ShowLists : AppCompatActivity() {
              zahl1
         } else {
              zahl2
+        }
+    }
+
+    fun checkValue(zahl:Any){ //  fun checkValue(zahl:Int){
+        when(zahl){
+            0->textView.append("Wert ist Null")
+            in 1..17->textView.append("Jünger als 18")
+            18,19,20->textView.append("der Wert ist 18,19 oder 20")
+            "Hallo" -> textView.append("Text ist Hallo")
+            else-> textView.append("Wert ist Ungültig")
         }
     }
 }
