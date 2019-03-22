@@ -34,14 +34,14 @@ class NullSafety : AppCompatActivity() {
         length?.compareTo(2)
 
         val listWithNulls: List<String?> = listOf("Hallo ", null, "Welt!")
-        val stringList : List<String> = listWithNulls.filterNotNull()
+        val stringList: List<String> = listWithNulls.filterNotNull()
 
         for (item in listWithNulls) {
             item?.let {
                 textView2.append("$it mit länge ${it?.length}")
             }
         }
-        for(itm in stringList){
+        for (itm in stringList) {
             textView2.append("$itm mit länge ${itm.length}")
         }
         b = foo(Node("A", "Frank"))
@@ -50,7 +50,7 @@ class NullSafety : AppCompatActivity() {
 
         val str = "123444"
 //        val int :Int? = str as? Int  // ?? Konvertierung ??
-        val int :Int? = str.toInt() // Konvertierung
+        val int: Int? = str.toInt() // Konvertierung
         textView2.append(int.toString())
 
 //        val runner = Runnable {
@@ -59,20 +59,20 @@ class NullSafety : AppCompatActivity() {
 //        Thread(runner).start()
 
         Thread(Runnable {
-            Log.d("AAA","Thread läuft")
+            Log.d("AAA", "Thread läuft")
             Thread.sleep(5000)
-            Log.d("AAA","Thread läuft immernoch")
+            Log.d("AAA", "Thread läuft immernoch")
         }).start()
 
         val a_num = 4
         val b_num = 10
 
-        var arithmetics : IntArithmetics = IntArithmetics.PLUS
-        Log.d("AAA","Aus dem UI-Thread")
-        textView2.append("$arithmetics($a_num,$b_num) = ${arithmetics.applyAsInt(a_num,b_num)}")
+        var arithmetics: IntArithmetics = IntArithmetics.PLUS
+        Log.d("AAA", "Aus dem UI-Thread")
+        textView2.append("$arithmetics($a_num,$b_num) = ${arithmetics.applyAsInt(a_num, b_num)}")
 
         button3.setOnClickListener {
-            startActivity(Intent(this,FunctionsAndMore::class.java))
+            startActivity(Intent(this, FunctionsAndMore::class.java))
         }
     }
 
@@ -82,13 +82,18 @@ class NullSafety : AppCompatActivity() {
         return name
     }
 }
+interface AllofNode
 
-open class Node(val parent: String?, val name: String?){
-    constructor():this(null,null)
-    constructor(name: String):this(null,name)
+data class Node(val parent: String?, val name: String?):AllofNode //{ // data - Klassen können nicht "open" sein!!
+//    constructor():this(null,null)
+//    constructor(name: String):this(null,name)
+// }
+
+data class Node2(val parent: String?, val name: String?, val Ort: String? = null):AllofNode { // Vererbung -> überflüssig?
+    fun fromNode(node: Node): Node2 = Node2(node.parent, node.name)
 }
 
-class NodeChild(parent: String?, name : String?): Node(parent, name),Serializable, Closeable {
+open class NodeChild(strasse: String?, ort: String?) : Serializable, Closeable {
     override fun close() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
