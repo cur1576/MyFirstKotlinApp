@@ -1,5 +1,6 @@
 package com.example.myfirstkotlinapp
 
+import android.content.Intent
 import android.os.Bundle
 
 import android.support.v7.app.AppCompatActivity
@@ -58,18 +59,21 @@ class NullSafety : AppCompatActivity() {
 //        Thread(runner).start()
 
         Thread(Runnable {
-            Log.d("A","Thread läuft")
+            Log.d("AAA","Thread läuft")
             Thread.sleep(5000)
-            Log.d("A","Thread läuft immernoch")
+            Log.d("AAA","Thread läuft immernoch")
         }).start()
 
         val a_num = 4
         val b_num = 10
 
         var arithmetics : IntArithmetics = IntArithmetics.PLUS
-        Log.d("A","Aus dem UI-Thread")
+        Log.d("AAA","Aus dem UI-Thread")
         textView2.append("$arithmetics($a_num,$b_num) = ${arithmetics.applyAsInt(a_num,b_num)}")
 
+        button3.setOnClickListener {
+            startActivity(Intent(this,FunctionsAndMore::class.java))
+        }
     }
 
     fun foo(node: Node): String? {
