@@ -59,7 +59,16 @@ class NullSafety : AppCompatActivity() {
 
         Thread(Runnable {
             Log.d("A","Thread läuft")
+            Thread.sleep(5000)
+            Log.d("A","Thread läuft immernoch")
         }).start()
+
+        val a_num = 4
+        val b_num = 10
+
+        var arithmetics : IntArithmetics = IntArithmetics.PLUS
+        Log.d("A","Aus dem UI-Thread")
+        textView2.append("$arithmetics($a_num,$b_num) = ${arithmetics.applyAsInt(a_num,b_num)}")
 
     }
 
