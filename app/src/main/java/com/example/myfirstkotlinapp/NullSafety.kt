@@ -3,8 +3,11 @@ package com.example.myfirstkotlinapp
 import android.os.Bundle
 
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.ViewParent
 import kotlinx.android.synthetic.main.activity_nullsafety.*
+import java.io.Closeable
+import java.io.Serializable
 import java.lang.IllegalArgumentException
 
 class NullSafety : AppCompatActivity() {
@@ -49,6 +52,15 @@ class NullSafety : AppCompatActivity() {
         val int :Int? = str.toInt() // Konvertierung
         textView2.append(int.toString())
 
+//        val runner = Runnable {
+//            Log.d("A","Thread läuft")
+//        }
+//        Thread(runner).start()
+
+        Thread(Runnable {
+            Log.d("A","Thread läuft")
+        }).start()
+
     }
 
     fun foo(node: Node): String? {
@@ -58,4 +70,14 @@ class NullSafety : AppCompatActivity() {
     }
 }
 
-class Node(val parent: String?, val name: String?)
+open class Node(val parent: String?, val name: String?){
+    constructor():this(null,null)
+    constructor(name: String):this(null,name)
+}
+
+class NodeChild(parent: String?, name : String?): Node(parent, name),Serializable, Closeable {
+    override fun close() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+}

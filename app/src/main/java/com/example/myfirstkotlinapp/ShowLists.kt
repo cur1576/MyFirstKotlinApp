@@ -68,6 +68,7 @@ class ShowLists : AppCompatActivity() {
             in 1..17->textView.append("Jünger als 18")
             18,19,20->textView.append("der Wert ist 18,19 oder 20")
             "Hallo" -> textView.append("Text ist Hallo")
+            !in  0..100->textView.append("ist größer 100")
             else-> textView.append("Wert ist Ungültig")
         }
     }
