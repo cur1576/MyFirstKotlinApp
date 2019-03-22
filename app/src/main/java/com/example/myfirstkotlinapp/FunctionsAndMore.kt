@@ -20,7 +20,7 @@ class FunctionsAndMore : AppCompatActivity() {
         val str3:Node = str2
         val node1 :AllofNode=Node2("Frank","Neumann")
 
-        if(node1 is Node2)
+        if(node1 is Node2 && node1.Ort != null)
             textView4.append("node1 ist ein Node2")
 
         j uper 3 // in dieser Schreibweise wird "infix" benötigt
